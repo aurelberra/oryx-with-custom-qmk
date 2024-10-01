@@ -1,0 +1,17 @@
+#define BP_K KC_B
+#define BP_P KC_E
+#define BP_COLN S(KC_V)
+#define BP_A KC_A
+#define BP_V KC_U
+#define BP_D KC_I
+#define BP_L KC_O
+#define BP_C KC_H
+#define BP_F KC_SLSH
+#define BP_X KC_C
+#define BP_G KC_COMM
+#define BP_E KC_F
+#define BP_PERC KC_EQL
+#define BP_EQL KC_MINS
+#define BP_COMM KC_G
+#define BP_7 S(KC_7)
+#define BP_AGRV KC_Z
