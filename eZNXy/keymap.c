@@ -8,28 +8,6 @@ enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
 };
 
-bool caps_word_press_user(uint16_t keycode) {
-  switch (keycode) {
-    // Keycodes that continue Caps Word, with shift applied.
-    case KC_A ... KC_Z:
-    case KC_MINS:
-      add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to the next key.
-      return true;
-
-    // Keycodes that continue Caps Word, without shifting.
-    case KC_1 ... KC_0:
-    case KC_BSPC:
-    case KC_DEL:
-    case KC_UNDS:
-    case TD(DANCE_1):
-      return true;
-
-    default:
-      return false;  // Deactivate Caps Word.
-  }
-};
-
-
 enum tap_dance_codes {
   DANCE_0,
   DANCE_1,
@@ -170,6 +148,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
   }
   return true;
+}
+
+bool caps_word_press_user(uint16_t keycode) {
+  switch (keycode) {
+    // Keycodes that continue Caps Word, with shift applied.
+    case KC_A ... KC_Z:
+    case KC_MINS:
+      add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to the next key.
+      return true;
+
+    // Keycodes that continue Caps Word, without shifting.
+    case KC_1 ... KC_0:
+    case KC_BSPC:
+    case KC_DEL:
+    case KC_UNDS:
+    case TD(DANCE_1):
+      return true;
+
+    default:
+      return false;  // Deactivate Caps Word.
+  }
 }
 
 static inline uint16_t LSFT_IF_CAPSWORD(uint16_t keycode) {
