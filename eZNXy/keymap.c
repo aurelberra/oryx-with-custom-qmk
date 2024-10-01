@@ -8,6 +8,26 @@ enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
 };
 
+bool caps_word_press_user(uint16_t keycode) {
+  switch (keycode) {
+    // Keycodes that continue Caps Word, with shift applied.
+    case KC_A ... KC_Z:
+    case KC_MINS:
+      add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to the next key.
+      return true;
+
+    // Keycodes that continue Caps Word, without shifting.
+    case KC_1 ... KC_0:
+    case KC_BSPC:
+    case KC_DEL:
+    case KC_UNDS:
+    case TD(DANCE_1):
+      return true;
+
+    default:
+      return false;  // Deactivate Caps Word.
+  }
+};
 
 
 enum tap_dance_codes {
@@ -152,6 +172,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+static inline uint16_t LSFT_IF_CAPSWORD(uint16_t keycode) {
+    return unlikely(is_caps_word_on())
+        ? LSFT(keycode)
+        : keycode;
+}
+static inline void register_code16_with_cw(uint16_t code) {
+    register_code16(LSFT_IF_CAPSWORD(code));
+}
+static inline void unregister_code16_with_cw(uint16_t code) {
+    unregister_code16(LSFT_IF_CAPSWORD(code));
+}
+static inline void tap_code16_with_cw(uint16_t code) {
+    tap_code16(LSFT_IF_CAPSWORD(code));
+}
 
 typedef struct {
     bool is_press_action;
@@ -238,7 +272,7 @@ void dance_1_finished(tap_dance_state_t *state, void *user_data) {
     dance_state[1].step = dance_step(state);
     switch (dance_state[1].step) {
         case SINGLE_TAP: register_code16(KC_W); break;
-        case SINGLE_HOLD: register_code16(LSFT(KC_1)); break;
+        case SINGLE_HOLD: register_code16(LSFT(KC_1)); caps_word_off();
         case DOUBLE_TAP: register_code16(KC_W); register_code16(KC_W); break;
         case DOUBLE_SINGLE_TAP: tap_code16(KC_W); register_code16(KC_W);
     }
