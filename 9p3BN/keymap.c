@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_BRIGHTNESS_DOWN,KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,  KC_AUDIO_VOL_UP,KC_BRIGHTNESS_UP,                                KC_CAPS,        KC_F1,          LALT(KC_F6),    LCTL(KC_F6),    KC_TRANSPARENT, KC_NO,          
     KC_NO,          KC_MEDIA_STOP,  KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,LGUI(LSFT(KC_Z)),                                LGUI(LSFT(KC_SPACE)),LGUI(LCTL(KC_LEFT)),LGUI(LCTL(KC_UP)),LGUI(LCTL(KC_RIGHT)),KC_TRANSPARENT, KC_NO,          
-    KC_NO,          RGB_TOG,        LSFT(KC_TAB),   LGUI(KC_TAB),   KC_TAB,         LGUI(KC_Z),                                     LALT(LGUI(LCTL(LSFT(KC_N)))),KC_DELETE,      LGUI(LCTL(KC_DOWN)),KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          
+    KC_NO,          RGB_TOG,        LSFT(KC_TAB),   LGUI(KC_TAB),   KC_TAB,         LGUI(KC_Z),                                     LALT(LGUI(LCTL(LSFT(KC_N)))),KC_DELETE,      LGUI(LCTL(KC_DOWN)),QK_REP, KC_TRANSPARENT, KC_NO,          
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 TD(DANCE_16),   KC_F6
   ),
   [2] = LAYOUT_voyager(
