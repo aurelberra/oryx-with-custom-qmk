@@ -7,6 +7,49 @@ enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
 };
 
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case KC_A:
+        case KC_B:
+        case KC_C:
+        case KC_D:
+        case KC_E:
+        case KC_F:
+        case KC_G:
+        case KC_H:
+        case KC_I:
+        case KC_J:
+        case KC_K:
+        case KC_L:
+        case KC_M:
+        case KC_N:
+        case KC_O:
+        case KC_P:
+        case KC_Q:
+        case KC_R:
+        case KC_S:
+        case KC_T:
+        case KC_U:
+        case KC_V:
+        case KC_W:
+        case KC_X:
+        case KC_Y:
+        case KC_Z:
+        case KC_MINS:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            return true;
+        // Keycodes that continue Caps Word, without shifting.
+        case KC_1 ... KC_0:
+        case KC_BSPC:
+        case KC_DEL:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
+}
+
 
 
 enum tap_dance_codes {
@@ -31,7 +74,7 @@ enum tap_dance_codes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
+    CW_TOGG,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_Q,           TD(DANCE_0),    MT(MOD_LALT | MOD_LGUI | MOD_LCTL, KC_E),TD(DANCE_1),    KC_T,                                           TD(DANCE_8),    TD(DANCE_9),    TD(DANCE_10),   TD(DANCE_11),   KC_P,           KC_NO,          
     KC_NO,          KC_A,           MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LCTL, KC_F),TD(DANCE_2),                                    TD(DANCE_12),   MT(MOD_RCTL, KC_J),MT(MOD_RGUI, KC_K),MT(MOD_RALT, KC_L),KC_SCLN,        KC_NO,          
     KC_NO,          KC_Z,           TD(DANCE_3),    TD(DANCE_4),    TD(DANCE_5),    TD(DANCE_6),                                    TD(DANCE_13),   MT(MOD_LALT | MOD_LGUI | MOD_LCTL, KC_M),MT(MOD_LALT | MOD_LGUI | MOD_LCTL | MOD_LSFT, KC_COMMA),TD(DANCE_14),   KC_SLASH,       KC_NO,          
