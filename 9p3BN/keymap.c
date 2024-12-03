@@ -7,6 +7,7 @@ enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
 };
 
+
 bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
         // Keycodes that continue Caps Word, with shift applied.
@@ -37,9 +38,16 @@ bool caps_word_press_user(uint16_t keycode) {
         case KC_Y:
         case KC_Z:
         case KC_MINS:
-            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+        case KC_COMM:
+        case KC_DOT:
+        case KC_SLSH:
+        case KC_SCLN:
+        case KC_MINS:
+        case KC_GRV:
+        case KC_BSLS:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next case key.
             return true;
-        // Keycodes that continue Caps Word, without shifting.
+            // Keycodes that continue Caps Word, without shifting.
         case KC_1 ... KC_0:
         case KC_BSPC:
         case KC_DEL:
@@ -49,6 +57,8 @@ bool caps_word_press_user(uint16_t keycode) {
             return false;  // Deactivate Caps Word.
     }
 }
+
+
 
 
 
