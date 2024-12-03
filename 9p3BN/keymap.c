@@ -42,7 +42,6 @@ bool caps_word_press_user(uint16_t keycode) {
         case KC_DOT:
         case KC_SLSH:
         case KC_SCLN:
-        case KC_MINS:
         case KC_GRV:
         case KC_BSLS:
             add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next case key.
