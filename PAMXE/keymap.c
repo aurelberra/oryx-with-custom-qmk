@@ -55,7 +55,6 @@ bool caps_word_press_user(uint16_t keycode) {
         case TD(DANCE_9):
         case TD(DANCE_10):
         case TD(DANCE_12):
-        case TD(DANCE_13):
         case TD(DANCE_14):
         case TD(DANCE_15):
         case TD(DANCE_16):
@@ -66,11 +65,12 @@ bool caps_word_press_user(uint16_t keycode) {
         // Keycodes that continue Caps Word, without shifting
         case KC_1 ... KC_0:
         case KC_C:
-        case TD(DANCE_4):  // Ergol -
-        case KC_O:
-        case TD(DANCE_11):  // Ergol 1DK
-        case KC_BSPC:
+        case TD(DANCE_4):  // C = Ergol -
         case TD(DANCE_7):  // ESC
+        case KC_O:
+        case TD(DANCE_11):  // O = Ergol 1DK
+        case KC_BSPC:
+        case TD(DANCE_13):  // N = Ergol .
         case KC_COMM:
         case KC_DEL:
         case KC_LALT:
