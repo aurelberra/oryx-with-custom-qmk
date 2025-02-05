@@ -33,6 +33,61 @@ enum tap_dance_codes {
   DANCE_18,
 };
 
+// --- Ergol layout ---
+// qcopw QCOPW | jmd’y JMDÉY
+// asenf ASENF | lrtiu LRTIU
+// zx-vb ZX-VB | .hg,k :HG;K
+
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied
+        case KC_A:
+        case KC_B:
+        case KC_D ... KC_M:
+        case KC_P ... KC_Z:
+        case KC_SCLN:
+        case TD(DANCE_0):
+        case TD(DANCE_1):
+        case TD(DANCE_2):
+        case TD(DANCE_3):
+        case TD(DANCE_5):
+        case TD(DANCE_6):
+        case TD(DANCE_9):
+        case TD(DANCE_10):
+        case TD(DANCE_11):
+        case TD(DANCE_13):
+        case TD(DANCE_14):
+        case TD(DANCE_15):
+        case TD(DANCE_16):
+        case TD(DANCE_18):
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting
+        case KC_1 ... KC_0:
+        case KC_C:
+        case TD(DANCE_4):  // -
+        case KC_O:
+        case TD(DANCE_12):  // Ergol 1DK
+        case KC_BSPC:
+        case TD(DANCE_7):  // BSPC
+        case TD(DANCE_8):  // ESC
+        case KC_COMM:
+        case KC_DEL:
+        case KC_LALT:
+        case KC_RALT:
+        case KC_LEFT:  // not working, since on layer2, activated by space
+        case KC_RIGHT:  // not working, since on layer2, activated by space
+        case KC_SLSH:
+        case KC_UNDS:
+            return true;
+
+        default:
+        // case TD(DANCE_17): // space
+            return false;  // Deactivate Caps Word.
+    }
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
