@@ -9,8 +9,6 @@ enum custom_keycodes {
   ST_MACRO_1,
 };
 
-
-
 enum tap_dance_codes {
   DANCE_0,
   DANCE_1,
@@ -52,9 +50,10 @@ bool caps_word_press_user(uint16_t keycode) {
         case TD(DANCE_3):
         case TD(DANCE_5):
         case TD(DANCE_6):
+        case TD(DANCE_8):
         case TD(DANCE_9):
         case TD(DANCE_10):
-        case TD(DANCE_11):
+        case TD(DANCE_12):
         case TD(DANCE_13):
         case TD(DANCE_14):
         case TD(DANCE_15):
@@ -66,12 +65,11 @@ bool caps_word_press_user(uint16_t keycode) {
         // Keycodes that continue Caps Word, without shifting
         case KC_1 ... KC_0:
         case KC_C:
-        case TD(DANCE_4):  // -
+        case TD(DANCE_4):  // Ergol -
         case KC_O:
-        case TD(DANCE_12):  // Ergol 1DK
+        case TD(DANCE_11):  // Ergol 1DK
         case KC_BSPC:
-        case TD(DANCE_7):  // BSPC
-        case TD(DANCE_8):  // ESC
+        case TD(DANCE_7):  // ESC
         case KC_COMM:
         case KC_DEL:
         case KC_LALT:
