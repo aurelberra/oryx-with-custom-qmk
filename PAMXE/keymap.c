@@ -44,6 +44,7 @@ bool caps_word_press_user(uint16_t keycode) {
         case KC_D ... KC_M:
         case KC_P ... KC_Z:
         case KC_SCLN:
+        case KC_SLSH:
         case TD(DANCE_0):
         case TD(DANCE_1):
         case TD(DANCE_2):
@@ -76,7 +77,6 @@ bool caps_word_press_user(uint16_t keycode) {
         case KC_RALT:
         case KC_LEFT:  // not working, since on layer2, activated by space
         case KC_RIGHT:  // not working, since on layer2, activated by space
-        case KC_SLSH:
         case KC_UNDS:
             return true;
 
